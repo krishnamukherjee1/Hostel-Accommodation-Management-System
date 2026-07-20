@@ -1,47 +1,95 @@
 #include <iostream>
-#include <vector>
 #include "include/Student.h"
+#include "include/StudentManager.h"
 
 using namespace std;
 
+void showMenu()
+{
+    cout << "\n=====================================\n";
+    cout << " Hostel Accommodation Management System\n";
+    cout << "=====================================\n";
+
+    cout << "1. Add Student\n";
+    cout << "2. Display All Students\n";
+    cout << "3. Exit\n";
+
+    cout << "\nEnter your choice: ";
+}
+
+void addStudent(StudentManager &manager)
+{
+    // We'll move the existing Add Student code here
+
+    int studentID;
+    string name;
+    string gender;
+    string branch;
+    int semester;
+    string phone;
+
+    cout << "\n===== Add Student =====\n";
+
+    cin.ignore();
+
+    cout << "Enter Student ID: ";
+    cin >> studentID;
+    cin.ignore();
+
+    cout << "Enter Name: ";
+    getline(cin, name);
+
+    cout << "Enter Gender: ";
+    getline(cin, gender);
+
+    cout << "Enter Branch: ";
+    getline(cin, branch);
+
+    cout << "Enter Semester: ";
+    cin >> semester;
+
+    cin.ignore();
+
+    cout << "Enter Phone: ";
+    getline(cin, phone);
+
+    Student newStudent(
+        studentID,
+        name,
+        gender,
+        branch,
+        semester,
+        phone);
+}
+
+
 int main()
 {
-    // Student student1;
-    Student student1(
-        101,
-        "Krishna Mukherjee",
-        "Male",
-        "CSE",
-        8,
-        "9876543210");
+    StudentManager manager;
+    int choice = 0;
 
-    Student student2(
-        102,
-        "Rahul Sharma",
-        "Male",
-        "ECE",
-        6,
-        "9876500000");
-
-    Student student3(
-        103,
-        "Priya Das",
-        "Female",
-        "EE",
-        4,
-        "9123456789");
-
-    // Create an empty vector
-    vector<Student> students;
-
-    students.push_back(student1);
-    students.push_back(student2);
-    students.push_back(student3);
-
-    for (int i = 0; i < students.size(); i++)
+    while (choice != 3)
     {
-        cout << "\n===== Student " << i + 1 << " =====\n";
-        students[i].display();
+        showMenu();
+
+        cin >> choice;
+
+        if (choice == 1)
+        {
+            addStudent(manager);
+        }
+        else if (choice == 2)
+        {
+            manager.displayAllStudents();
+        }
+        else if (choice == 3)
+        {
+            cout << "\nThank you for using the system.\n";
+        }
+        else
+        {
+            cout << "\nInvalid Choice!\n";
+        }
     }
 
     return 0;
