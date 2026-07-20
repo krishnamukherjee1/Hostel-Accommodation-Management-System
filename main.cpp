@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 #include "include/Student.h"
 
 using namespace std;
@@ -30,21 +31,18 @@ int main()
         4,
         "9123456789");
 
-    cout << "\n===== Student 1 =====\n";
-    student1.display();
+    // Create an empty vector
+    vector<Student> students;
 
-    cout << endl;
+    students.push_back(student1);
+    students.push_back(student2);
+    students.push_back(student3);
 
-    student2.display();
-
-    cout << endl;
-
-    student3.display();
-
-    cout << "=====================================\n";
-    cout << " Hostel Accommodation Management System\n";
-    cout << " Version 1.1\n";
-    cout << "=====================================\n";
+    for (int i = 0; i < students.size(); i++)
+    {
+        cout << "\n===== Student " << i + 1 << " =====\n";
+        students[i].display();
+    }
 
     return 0;
 }
