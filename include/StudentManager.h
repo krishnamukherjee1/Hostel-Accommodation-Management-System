@@ -11,7 +11,12 @@ private:
 
 public:
     void addStudent(const Student &student);
+
     void displayAllStudents();
+
+    Student* searchStudentByID(int id);
+
+    bool studentIDExists(int id);
 };
 
 #endif

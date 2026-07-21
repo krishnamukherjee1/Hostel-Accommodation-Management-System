@@ -23,3 +23,29 @@ void StudentManager::displayAllStudents()
         cout << endl;
     }
 }
+
+Student* StudentManager::searchStudentByID(int id)
+{
+    for (size_t i = 0; i < students.size(); i++)
+    {
+        if (students[i].getStudentID() == id)
+        {
+            return &students[i];
+        }
+    }
+
+    return nullptr;
+}
+
+bool StudentManager::studentIDExists(int id)
+{
+    for (size_t i = 0; i < students.size(); i++)
+    {
+        if (students[i].getStudentID() == id)
+        {
+            return true;
+        }
+    }
+
+    return false;
+}
