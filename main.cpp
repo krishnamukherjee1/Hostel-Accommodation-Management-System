@@ -13,7 +13,8 @@ void showMenu()
     cout << "1. Add Student\n";
     cout << "2. Display All Students\n";
     cout << "3. Search Student\n";
-    cout << "4. Exit\n";
+    cout << "4. Delete Student\n";
+    cout << "5. Exit\n";
 
     cout << "\nEnter your choice: ";
 }
@@ -38,11 +39,11 @@ void addStudent(StudentManager &manager)
     cin.ignore();
 
     if (manager.studentIDExists(studentID))
-{
-    cout << "\nStudent ID already exists!\n";
-    cout << "Student was not added.\n";
-    return;
-}
+    {
+        cout << "\nStudent ID already exists!\n";
+        cout << "Student was not added.\n";
+        return;
+    }
 
     cout << "Enter Name: ";
     getline(cin, name);
@@ -92,15 +93,33 @@ void searchStudent(StudentManager &manager)
     }
 }
 
+void deleteStudent(StudentManager &manager)
+{
+    int id;
+
+    cout << "\n===== Delete Student =====\n";
+
+    cout << "Enter Student ID: ";
+    cin >> id;
+
+    if (manager.deleteStudentByID(id))
+    {
+        cout << "\nStudent deleted successfully!\n";
+    }
+    else
+    {
+        cout << "\nStudent not found.\n";
+    }
+}
+
 int main()
 {
     StudentManager manager;
     int choice = 0;
 
-    while (choice != 4)
+    while (choice != 5)
     {
         showMenu();
-
         cin >> choice;
 
         if (choice == 1)
@@ -116,6 +135,10 @@ int main()
             searchStudent(manager);
         }
         else if (choice == 4)
+        {
+            deleteStudent(manager);
+        }
+        else if (choice == 5)
         {
             cout << "\nThank you for using the system.\n";
         }

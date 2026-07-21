@@ -49,3 +49,17 @@ bool StudentManager::studentIDExists(int id)
 
     return false;
 }
+
+bool StudentManager::deleteStudentByID(int id)
+{
+    for (size_t i = 0; i < students.size(); i++)
+    {
+        if (students[i].getStudentID() == id)
+        {
+            students.erase(students.begin() + i);
+            return true;
+        }
+    }
+
+    return false;
+}
