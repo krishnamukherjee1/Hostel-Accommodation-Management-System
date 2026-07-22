@@ -1,5 +1,6 @@
 #include <iostream>
 #include "../include/Student.h"
+#include "../external/json.hpp"
 
 using namespace std;
 
@@ -93,4 +94,31 @@ int Student::getAllocatedRoomNumber()
 void Student::setAllocatedRoomNumber(int roomNumber)
 {
     allocatedRoomNumber = roomNumber;
+}
+
+json Student::toJson() const
+{
+    return {
+        {"studentID", studentID},
+        {"name", name},
+        {"gender", gender},
+        {"branch", branch},
+        {"semester", semester},
+        {"phone", phone},
+        {"allocatedRoomNumber", allocatedRoomNumber}};
+}
+
+Student Student::fromJson(const json &j)
+{
+    Student student;
+
+    student.studentID = j.at("studentID");
+    student.name = j.at("name");
+    student.gender = j.at("gender");
+    student.branch = j.at("branch");
+    student.semester = j.at("semester");
+    student.phone = j.at("phone");
+    student.allocatedRoomNumber = j.at("allocatedRoomNumber");
+
+    return student;
 }

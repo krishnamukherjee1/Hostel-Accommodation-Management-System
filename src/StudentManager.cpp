@@ -1,7 +1,12 @@
 #include "../include/StudentManager.h"
+
 #include <iostream>
+#include <fstream>
+
+#include "../external/json.hpp"
 
 using namespace std;
+using json = nlohmann::json;
 
 void StudentManager::addStudent(const Student &student)
 {
@@ -24,7 +29,7 @@ void StudentManager::displayAllStudents()
     }
 }
 
-Student* StudentManager::searchStudentByID(int id)
+Student *StudentManager::searchStudentByID(int id)
 {
     for (size_t i = 0; i < students.size(); i++)
     {
@@ -62,4 +67,18 @@ bool StudentManager::deleteStudentByID(int id)
     }
 
     return false;
+}
+
+void StudentManager::saveStudents()
+{
+    json studentsJson = json::array();
+
+    for (const Student &student : students)
+    {
+        studentsJson.push_back(student.toJson());
+    }
+
+    std::ofstream file("data/students.json");
+
+    file << studentsJson.dump(4);
 }

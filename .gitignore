@@ -33,3 +33,5 @@ CMakeCache.txt
 
 # Temporary files
 *.tmp
+temp1.cpp
+temp2.cpp

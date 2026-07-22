@@ -15,6 +15,9 @@ public:
     Student *searchStudentByID(int id);
     bool studentIDExists(int id);
     bool deleteStudentByID(int id);
+
+    void saveStudents();
+    void loadStudents();
 };
 
 #endif

@@ -2,6 +2,9 @@
 #define STUDENT_H
 
 #include <string>
+#include "../external/json.hpp"
+
+using json = nlohmann::json;
 
 class Student
 {
@@ -38,6 +41,9 @@ public:
 
     int getAllocatedRoomNumber();
     void setAllocatedRoomNumber(int roomNumber);
+
+    json toJson() const;
+    static Student fromJson(const json &j);
 };
 
 #endif
