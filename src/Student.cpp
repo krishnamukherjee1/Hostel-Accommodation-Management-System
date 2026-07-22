@@ -6,15 +6,13 @@ using namespace std;
 Student::Student()
 {
     studentID = 0;
+    name = "";
+    gender = "";
+    branch = "";
+    semester = 0;
+    phone = "";
+    allocatedRoomNumber = -1; // Initialize to -1 to indicate no room allocated
     cout << "Student Constructor Called!" << endl;
-}
-
-Student::Student(int id, std::string studentName)
-{
-    studentID = id;
-    name = studentName;
-
-    cout << "Parameterized Constructor Called!" << endl;
 }
 
 Student::Student(
@@ -31,6 +29,7 @@ Student::Student(
     branch = studentBranch;
     semester = studentSemester;
     phone = studentPhone;
+    allocatedRoomNumber = -1;
 
     cout << "Parameterized Constructor Called!" << endl;
 }
@@ -48,6 +47,12 @@ void Student::display()
     cout << "Branch: " << branch << endl;
     cout << "Semester: " << semester << endl;
     cout << "Phone: " << phone << endl;
+    cout << "Allocated Room: ";
+    if (allocatedRoomNumber == -1)
+        cout << "Not Allocated";
+    else
+        cout << allocatedRoomNumber;
+    cout << endl;
 }
 
 std::string Student::getName()
@@ -78,4 +83,14 @@ int Student::getSemester()
 std::string Student::getPhone()
 {
     return phone;
+}
+
+int Student::getAllocatedRoomNumber()
+{
+    return allocatedRoomNumber;
+}
+
+void Student::setAllocatedRoomNumber(int roomNumber)
+{
+    allocatedRoomNumber = roomNumber;
 }

@@ -12,11 +12,10 @@ private:
     std::string branch;
     int semester;
     std::string phone;
+    int allocatedRoomNumber; // Initialize to -1 to indicate no room allocated
 
 public:
     Student();
-
-    Student(int id, std::string studentName); // we're introducing constructor overloading.
 
     Student(
         int id,
@@ -27,8 +26,8 @@ public:
         std::string studentPhone);
 
     void setName(std::string studentName);
-    std::string getName();
 
+    std::string getName();
     int getStudentID();
     std::string getGender();
     std::string getBranch();
@@ -36,6 +35,9 @@ public:
     std::string getPhone();
 
     void display();
+
+    int getAllocatedRoomNumber();
+    void setAllocatedRoomNumber(int roomNumber);
 };
 
 #endif
