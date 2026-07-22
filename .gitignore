@@ -1,18 +1,35 @@
-# Executable files
+# Executables
 *.exe
-*.out
 
 # Object files
 *.o
 *.obj
 
-# Build folders
+# Static libraries
+*.a
+*.lib
+
+# Dynamic libraries
+*.dll
+*.so
+*.dylib
+
+# Build directories
 build/
 bin/
 
-# Visual Studio Code settings
+# Visual Studio Code
 .vscode/
 
-# Debug folders
-Debug/
-Release/
+# Visual Studio
+.vs/
+
+# CMake
+CMakeFiles/
+CMakeCache.txt
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
